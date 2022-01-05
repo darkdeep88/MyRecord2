@@ -169,7 +169,7 @@
 <script type="text/javascript">
 
 function checkBox(){
-	alert("으악실행 ㄱㄱ");
+	alert("으악실행 ㄱㄱ");ㅇㅇㅇㅇㅇ
 }
 
 function addList(){
