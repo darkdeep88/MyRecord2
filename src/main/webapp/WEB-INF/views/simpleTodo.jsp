@@ -85,7 +85,7 @@
         <ul class="nav">
        		<br>
        	  <li><a><h3>DashBoard</h3></a></li>
-       	  <li><a href="simpleBoard"><h3>Simple Todo</h3></a></li>
+       	  <li><a href="simpleTodo"><h3>Simple Todo</h3></a></li>
           <li><a href="dailyBoard"><h3>일상 등록</h3></a></li>
           <li><a><h3>업무 등록</h3></a></li>
           <li><a><h3>Side 3</h3></a></li>
@@ -102,53 +102,83 @@
       </div>
     </div>
     <main class="col-9 py-md-3 pl-md-5 bd-content" role="main">
-      <h1>Simple ToDoList</h1><br>
-      <div>
-      	<!-- <button type="button" onclick="window.open('dailyboard_InsertForm', 'width=430,height=500');"  class="btn btn-primary" >등록</button>
-      	 --><button type="button" onclick="window.open('dailyboard_InsertForm', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=1000,height=450');"  class="btn btn-primary" >등록</button>
-	  </div>
-	  
+      <h1>Simple ToDoList </h1><br>
+      <form class="form-inline" action="insertTodo">
+	      <div class="">
+	      	<input type="hidden" value="${member.no }" name="user_no">
+	     	<input type="text" name="content" style="width:800px;" class="form-control" placeholder="메세지를 입력하세요!">     	
+	      	<button type="submit" class="btn btn-primary" onclick="">등록</button>
+	     	<input type="reset" class="btn btn-secondary" value="취소">
+		  </div>
+	  </form>	  
 	  <hr>
-	  <c:forEach items="${list }" var="list">
-	   <div id="formList" style="background-color:skyblue; border:3px solid black;">  
-	   
-	   		<div class="form-group" style="margin:30px;">
-				<label for="comment">제목</label> <input type="text" name="title" value="${list.title }" readonly="readonly" style="width:35%;">
-				<label for="comment">시작일</label> <input type="date" name="start_date" value="${list.start_date }">
-					  
-				<label for="comment">종료일</label> <input type="date" name="last_date" value="${list.last_date }">
-				<label for="comment">완료여부</label> <input type="checkbox" style="zoom:1.5;" name="chkboxNo" onclick="chbox(this);" value="${list.no }">
-			</div>
-			<div class="form-group" style="margin:30px;">
-  				<label for="comment">내용</label>
-  				<textarea class="form-control" cols="30" rows="5" name="content" readonly="readonly">${list.content }</textarea>
-			</div>
-			<div class="form-group" style="margin:30px;">		
-  			<input type="button" class="btn btn-primary" value="수정" onclick="window.open('/dailyboard_UpdateForm?no=${list.no}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=1000,height=450');">
-  			<input type="button" class="btn btn-primary" onclick="location.href='dailyboard_Delete?no=${list.no}'" value="삭제">
-			</div>
-	  </div>
-	  <br>
-	  </c:forEach>
+	  	  
+  		<table class="table table-bordered">
+		    <thead>
+		      <tr>
+		        <th></th>
+		        <th>내용</th>
+		      </tr>
+		    </thead>
+		   	<c:forEach items="${list }" var="list">
+		    <tbody>
+		      <tr>
+		        		        
+		       	<c:set var="check" value="${list.check_run }" />
+		        <c:choose>
+		        	<c:when test="${check eq '1' }" >
+		        		<td width="10" style="background-color:skyblue">
+				   			<div class="form-check-inline">
+							  <label class="form-check-label">
+							    <input type="checkbox" onchange="checkBox()" class="form-check-input" value="1" checked>
+							  </label>
+							</div>	
+				   		</td>
+	        			<td style="background-color:skyblue">
+	        				${list.content } = 체크가 된거
+	        				<input type="button" value="삭제" style="float:right">		
+	        			</td>
+	        		</c:when>
+	        		
+	        		<c:otherwise>
+		        		<td width="100">
+				   			<div class="form-check-inline">
+							  <label class="form-check-label">
+							    <input type="checkbox" onchange="checkBox()" class="form-check-input" value="">
+							  </label>
+							</div>	
+				   		</td>	
+		        		<td>
+		        			${list.content } =  체크가 안된거 
+		        			<input type="button" value="삭제" style="float:right">
+		        		</td>
+		        	</c:otherwise>
+		        </c:choose>
+		        
+		        
+		      </tr>
+		     </c:forEach>		      
+		    </tbody>
+	  	</table>
+	  
+	  
 	</main>
   </div>
 </div>
 
 <script type="text/javascript">
-	
-function chbox(box){
-	
-	const no = $("#chkboxNo").val();
-	alert(no);
-	if(box.checked==true){
-		alert("체크");
-		
-	}else if(box.checked==false){
-		alert("체크해제");
-	}
-};	
 
+function checkBox(){
+	alert("으악실행 ㄱㄱ");
+}
 
+function addList(){
+	//alert("addList");
+	
+	$("#addDiv").append("<input type='text' class='form-control form-control-lg' value=''>");
+	$("#addDiv").append("<input type='button' class='btn btn-primary' value='추가'>&nbsp;");
+	$("#addDiv").append("<input type='button' class='btn btn-secondary' value='취소'>");
+}
 </script>
 
 </body>

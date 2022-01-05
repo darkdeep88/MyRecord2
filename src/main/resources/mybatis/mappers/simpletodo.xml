@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.SimpleTodoDAO">
+	
+	<!-- SimpleTodo 저장 -->
+	<insert id="insertToDo" parameterType="SimpleTodoVO">
+	    insert into simpletodo(user_no, simple_no, content, check_run)
+        values(#{user_no}, simple_no.nextval, #{content}, #{check_run, jdbcType=VARCHAR})
+    </insert>
+			
+	<!-- SimpleToDoList 저장된 ToDoList 출력 -->
+	<select id="simpleToDoList" parameterType="SimpleTodoVO" resultType="SimpleTodoVO">
+		select * from simpletodo
+		order by simple_no desc
+		
+    </select>
+    
+    <select id="selectAllMember" resultType="memberVO">
+	    select * from member_courier
+    </select>
+    
+    <update id="updateMemberPw" parameterType="memberVO">
+	    update member_courier set pw=#{pw} where id=#{id}
+    </update>
+    <delete id="deleteMember" parameterType="String">
+	    delete from member_courier where id=#{id}
+    </delete>
+</mapper>  

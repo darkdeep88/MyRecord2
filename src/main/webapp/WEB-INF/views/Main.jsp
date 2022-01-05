@@ -82,7 +82,7 @@
         <ul class="nav">
        		<br>
        	  <li><a><h3>DashBoard</h3></a></li>
-       	  <li><a href="simpleBoard"><h3>Simple Todo</h3></a></li>
+       	  <li><a href="simpleTodo"><h3>Simple Todo</h3></a></li>
           <li><a href="dailyBoard"><h3>일상 등록</h3></a></li>
           <li><a><h3>업무 등록</h3></a></li>
    		  <li><a><h3>Side 4</h3></a></li>
@@ -100,12 +100,13 @@
     <main class="col-9 py-md-3 pl-md-5 bd-content" role="main">
       <h1>Main 1 ${memberVO.id}</h1>
       <h1>Main 2 ${memberVO.pw}</h1>
-      <h1>Main 3 ${member }</h1>
-      <h1>Main 4</h1>
+      <h1>Main 3 ${member.no}</h1>
+      <h1>Main 4 ${member }</h1>
       <h1>Main 5</h1>
       <h1>Main 6</h1>
       <h1>Main 7</h1>
       <h1>Main 8</h1>
+      <h1>Main 9</h1>
     </main>
   </div>
 </div>
