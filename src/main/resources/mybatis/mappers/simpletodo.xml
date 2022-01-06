@@ -15,14 +15,17 @@
 	<select id="simpleToDoList" parameterType="SimpleTodoVO" resultType="SimpleTodoVO">
 		select * from simpletodo
 		order by simple_no desc
-		
-    </select>
-    
+	</select>
+	
+	
+
+
+
     <select id="selectAllMember" resultType="memberVO">
 	    select * from member_courier
     </select>
     
-    <update id="updateMemberPw" parameterType="memberVO">
+    <update id="simpletodo_Update" parameterType="memberVO">
 	    update member_courier set pw=#{pw} where id=#{id}
     </update>
     <delete id="deleteMember" parameterType="String">

@@ -42,4 +42,17 @@ public class simpleTodoController {
 		
 		return "redirect:simpleTodo";
 	}
+	
+	//check 업데이트
+	@RequestMapping("simpletodo_Update")
+	public String simpletodo_Update(SimpleTodoVO simpletodoVO) {
+		System.out.println("여기오니?");
+		System.out.println("뭐지 값이 안오나? : " + simpletodoVO);
+		
+		simpletodoServie.simpletodo_Update(simpletodoVO);
+		
+		System.out.println("여긴 종료인데?");
+		
+		return "simpleTodo";
+	}
 }

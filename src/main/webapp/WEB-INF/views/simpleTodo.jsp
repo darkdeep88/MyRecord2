@@ -112,7 +112,7 @@
 		  </div>
 	  </form>	  
 	  <hr>
-	  	  
+	  	   
   		<table class="table table-bordered">
 		    <thead>
 		      <tr>
@@ -121,7 +121,10 @@
 		      </tr>
 		    </thead>
 		   	<c:forEach items="${list }" var="list">
-		    <tbody>
+		   	
+		   	<c:set var="user_no" value="${list.user_no }" />
+		   	${list.user_no }
+		   	<tbody>
 		      <tr>
 		        		        
 		       	<c:set var="check" value="${list.check_run }" />
@@ -130,13 +133,14 @@
 		        		<td width="10" style="background-color:skyblue">
 				   			<div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="checkbox" onchange="checkBox()" class="form-check-input" value="1" checked>
-							  </label>
+							    <input type="checkbox" onchange="checkBox(this)" class="form-check-input" value="1" checked>
+							</label>
 							</div>	
 				   		</td>
 	        			<td style="background-color:skyblue">
 	        				${list.content } = 체크가 된거
-	        				<input type="button" value="삭제" style="float:right">		
+	        				<input type="button" value="삭제" style="float:right">
+	        						
 	        			</td>
 	        		</c:when>
 	        		
@@ -144,7 +148,7 @@
 		        		<td width="100">
 				   			<div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="checkbox" onchange="checkBox()" class="form-check-input" value="">
+							    <input type="checkbox" onchange="checkBox(this)" class="form-check-input" value="">
 							  </label>
 							</div>	
 				   		</td>	
@@ -168,8 +172,29 @@
 
 <script type="text/javascript">
 
-function checkBox(){
-	alert("으악실행 ㄱㄱ");ㅇㅇㅇㅇㅇ
+function checkBox(checked){
+	
+	var check_run;
+	var user_no;
+
+	alert(user_no);
+	
+	if(checked.checked == true){
+		check_run = "1";
+		alert("체크하였습니다");
+		
+	} else{
+		check_run = "";
+		alert("체크해제 하였습니다.");
+	}
+	
+	$.post('../simpletodo_Update', {check_run}, function(data){
+		
+		alert("업데이트 완료");
+	});
+	
+	
+	
 }
 
 function addList(){
