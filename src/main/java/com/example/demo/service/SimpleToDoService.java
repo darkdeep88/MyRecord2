@@ -20,8 +20,8 @@ public class SimpleToDoService {
 		
 	}
 
-	public List<SimpleTodoVO> simpleToDoList() throws DataAccessException{
-		return simpletodoDAO.simpleToDoList();
+	public List<SimpleTodoVO> simpleToDoList(SimpleTodoVO simpletodoVO) throws DataAccessException{
+		return simpletodoDAO.simpleToDoList(simpletodoVO);
 	}
 
 	public void simpletodo_Update(SimpleTodoVO simpletodoVO) throws DataAccessException{

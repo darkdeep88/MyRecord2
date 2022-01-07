@@ -14,7 +14,7 @@ public interface SimpleTodoDAO {
 
 	void insertToDo(SimpleTodoVO simpletodoVO) throws DataAccessException;
 
-	List<SimpleTodoVO> simpleToDoList() throws DataAccessException;
+	List<SimpleTodoVO> simpleToDoList(SimpleTodoVO simpletodoVO) throws DataAccessException;
 
 	void simpletodo_Update(SimpleTodoVO simpletodoVO) throws DataAccessException;
 

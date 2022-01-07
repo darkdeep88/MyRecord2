@@ -14,6 +14,7 @@
 	<!-- SimpleToDoList 저장된 ToDoList 출력 -->
 	<select id="simpleToDoList" parameterType="SimpleTodoVO" resultType="SimpleTodoVO">
 		select * from simpletodo
+		where user_no=#{user_no}
 		order by simple_no desc
 	</select>
 	

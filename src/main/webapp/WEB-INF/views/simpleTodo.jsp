@@ -53,6 +53,26 @@
 
 </style>
 
+<script type="text/javascript">
+$(document).ready(function(){
+
+	alert("호출!!!");
+	
+	const user_no = document.getElementById("user_no").value;
+
+	alert(user_no);	
+	
+	$.post('../simpleToDoList',{user_no},function(){
+		alert("호출완료");
+	});
+
+	
+	
+});
+
+</script>
+
+
 </head>
 <body>
 <header class="navbar navbar-expand navbar-dark bg-dark bd-navbar">
@@ -102,31 +122,28 @@
       </div>
     </div>
     <main class="col-9 py-md-3 pl-md-5 bd-content" role="main">
-      <h1>Simple ToDoList </h1><br>
+      <h1>Simple ToDoList ${member.no } </h1><br>
       <form class="form-inline" action="insertTodo">
 	      <div class="">
-	      	<input type="hidden" value="${member.no }" name="user_no">
-	     	<input type="text" name="content" style="width:800px;" class="form-control" placeholder="메세지를 입력하세요!">     	
+	      	<input type="hidden" value="${member.no }" id="user_no">
+	     	<input type="text" name="content" style="width:900px;" class="form-control" placeholder="메세지를 입력하세요!">     	
 	      	<button type="submit" class="btn btn-primary" onclick="">등록</button>
 	     	<input type="reset" class="btn btn-secondary" value="취소">
 		  </div>
 	  </form>	  
 	  <hr>
-	  	   
+	  	
   		<table class="table table-bordered">
 		    <thead>
 		      <tr>
-		        <th></th>
+		        <th>체크</th>
 		        <th>내용</th>
 		      </tr>
 		    </thead>
 		   	<c:forEach items="${list }" var="list">
-		   	
-		   	<c:set var="user_no" value="${list.user_no }" />
-		   	${list.user_no }
 		   	<tbody>
 		      <tr>
-		        		        
+		       	     
 		       	<c:set var="check" value="${list.check_run }" />
 		        <c:choose>
 		        	<c:when test="${check eq '1' }" >
@@ -138,7 +155,7 @@
 							</div>	
 				   		</td>
 	        			<td style="background-color:skyblue">
-	        				${list.content } = 체크가 된거
+	        				${list.user_no } = ${list.content } = 체크가 된거
 	        				<input type="button" value="삭제" style="float:right">
 	        						
 	        			</td>
@@ -153,7 +170,7 @@
 							</div>	
 				   		</td>	
 		        		<td>
-		        			${list.content } =  체크가 안된거 
+		        			${list.user_no } = ${list.content } =  체크가 안된거 
 		        			<input type="button" value="삭제" style="float:right">
 		        		</td>
 		        	</c:otherwise>
@@ -175,9 +192,10 @@
 function checkBox(checked){
 	
 	var check_run;
-	var user_no;
-
-	alert(user_no);
+	//var user_no = document.getElementById("user_no").value;
+	//var user_no = '<c:out value="${user_no}"/>';
+	
+	alert("checkbox 실행");
 	
 	if(checked.checked == true){
 		check_run = "1";
@@ -195,7 +213,8 @@ function checkBox(checked){
 	
 	
 	
-}
+};
+
 
 function addList(){
 	//alert("addList");
