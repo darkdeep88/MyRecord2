@@ -82,7 +82,7 @@
         <ul class="nav">
        		<br>
        	  <li><a><h3>DashBoard</h3></a></li>
-       	  <li><a href="simpleTodo"><h3>Simple Todo</h3></a></li>
+       	  <li><a href="simpleToDoList?user_no=${member.no }"><h3>Simple Todo</h3></a></li>
           <li><a href="dailyBoard"><h3>일상 등록</h3></a></li>
           <li><a><h3>업무 등록</h3></a></li>
    		  <li><a><h3>Side 4</h3></a></li>

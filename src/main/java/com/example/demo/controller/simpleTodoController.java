@@ -16,22 +16,8 @@ import com.example.demo.vo.SimpleTodoVO;
 public class simpleTodoController {
 
 	@Autowired
-	SimpleToDoService simpletodoService;
-	
-	
-	//simpleBoard 페이지 호출
-	@RequestMapping("simpleTodo")
-	public String simpleTodo() {
-		
-		//List<SimpleTodoVO> list = simpletodoService.simpleToDoList();
-		//model.addAttribute("list", list);
-		
-		System.out.println("simpleBoard 호출");
-		
-		return "simpleTodo"; 
-	}
-	
-	//simpleToDoList 화면 출력시 select
+	SimpleToDoService simpletodoService;	
+
 	@RequestMapping("simpleToDoList")
 	public String simpleToDoList(SimpleTodoVO simpletodoVO, Model model) {
 	
